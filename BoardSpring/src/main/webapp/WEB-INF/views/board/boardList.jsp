@@ -9,8 +9,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+<button id="regbtn">글 작성</button>
 <div id='tablebox'>
 	<div id='table'>
+	
 	<p>SPRING BOARD</p>
 	<table class="board" border='1' cellspacing='0' >
 		<caption>게시판 리스트</caption>
@@ -38,9 +40,9 @@
 				<td class='views'>0</td>
 				<td class='rdate'>0000-00-00</td>
 			</tr>
-		<c:forEach items="${list}" var="board">
+		<c:forEach items="${blist}" var="board">
 			<tr>
-				<td class='bno'>${borad.bno}</a></td>
+				<td class='bno'>${board.bno}</td>
 				<td class='title'><a href="#">${board.title}</td>
 				<td class='writer'>${board.writer}</td>
 				<td class='views'>${board.views}</td>

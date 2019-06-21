@@ -72,7 +72,7 @@
 		<section id='content'>
 			<div class='data_box'>
 				
-				<a href='/board/'>게시판</a>(MVC)
+				<a href='/board/list.do'>게시판</a>(MVC)
 				
 			</div>
 		</section>

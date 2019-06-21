@@ -1,1 +1,35 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.project.mapper.BoardMapper">
+
+  <select id="list" resultType="org.project.domain.BoardVO">
+  	  select * from BOARD order by BNO desc
+  </select>
+  <insert id="insert" parameterType="org.project.domain.BoardVO">
+      insert into BOARD values(BOARD_SEQ.nextval, #{title}, #{detail},#{writer},0,SYSDATE,SYSDATE)
+  </insert>
+  
+  <select id="content" resultType="org.project.domain.BoardVO" parameterType="long">
+  	  select * from BOARD where BNO=#{BNO}
+  </select>
+  
+  <update id="update" parameterType="org.project.domain.BoardVO">
+  	  update BOARD set title=#{title},detail=#{detail},updatedate=SYSDATE where BNO=#{BNO}
+  </update>
+  
+  <delete id="delete" parameterType="long">
+      delete from BOARD where BNO=#{BNO}
+  </delete>
+  
+  <!-- for Ajax 
+  <select id="selectBySeq" resultType="BoardVO" parameterType="long">
+      select * from BOARD where BNO=#{BNO}
+  </select>
+  <select id="selectByName" resultType="BoardVO" parameterType="String">
+      select * from BOARD where writer like #{writer} order by writer
+  </select>
+  -->
+  
+</mapper>
