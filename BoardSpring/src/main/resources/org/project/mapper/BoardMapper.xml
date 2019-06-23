@@ -8,7 +8,7 @@
   	  select * from BOARD order by BNO desc
   </select>
   <insert id="insert" parameterType="org.project.domain.BoardVO">
-      insert into BOARD values(BOARD_SEQ.nextval, #{title}, #{detail},#{writer},0,SYSDATE,SYSDATE)
+      insert into BOARD values(BOARD_SEQ.nextval, #{title}, #{content},#{writer},0,SYSDATE,SYSDATE)
   </insert>
   
   <select id="content" resultType="org.project.domain.BoardVO" parameterType="long">
@@ -16,7 +16,7 @@
   </select>
   
   <update id="update" parameterType="org.project.domain.BoardVO">
-  	  update BOARD set title=#{title},detail=#{detail},updatedate=SYSDATE where BNO=#{BNO}
+  	  update BOARD set title=#{title},content=#{content},updatedate=SYSDATE where BNO=#{BNO}
   </update>
   
   <delete id="delete" parameterType="long">
