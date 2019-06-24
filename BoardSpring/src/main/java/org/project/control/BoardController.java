@@ -16,7 +16,6 @@ import lombok.AllArgsConstructor;
 
 @Controller
 @RequestMapping("/board/*")
-@AllArgsConstructor
 public class BoardController {
 	
 	@Autowired

@@ -11,7 +11,6 @@ import lombok.AllArgsConstructor;
 
 
 @Service
-@AllArgsConstructor
 public class BoardServiceImpl implements BoardService {	
 	
 	@Autowired

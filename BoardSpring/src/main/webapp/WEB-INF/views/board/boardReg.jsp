@@ -2,12 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../includes/header.jsp"%>
 <link rel='stylesheet' type='text/css' href='../resources/css/main.css'>
-<link rel='stylesheet' type='text/css' href='../resources/css/board.css'>
+<link rel='stylesheet' type='text/css' href='../resources/css/reg.css'>
 <div id='tablebox'>
 	<div id='table'>
 		<div id=content>
 			<p>BOARD INPUT</p>
-			<table class="board" border='1'>
+			<table class="reply" border='1'>
 				<colgroup>
 					<col width='20'>
 					<col width='110'>
@@ -19,27 +19,28 @@
 					<form action="/reg.do" method="post">
 						<tr>
 							<th>제목</th>
-							<td><input type="text" placeholder="제목을 입력하세요. "
+							<td><input type="text"
 								name="title" /></td>
 						</tr>
 						<tr>
 							<th>작성자</th>
 							<td><input type="text" name="writer" value="test" disabled /></td>
-						</tr>
+						</tr> 
 						<tr>
 							<th>내용</th>
-							<td><textarea cols="110" placeholder="내용을 입력하세요. "
-									name="detail"></textarea></td>
+							<td height="200px"><textarea height="200px" name="detail"></textarea></td>
 						</tr>
 						<tr>
-							<td colspan="2"><input type="button" value="SUBMIT" /> <input
-								type="button" value="RESET" /> <input type="button"
-								value="LIST" /></td>
+							<td colspan="2">
+							<input type="submit" data-oper='submit' value="SUBMIT" /> 
+							<input type="submit" data-oper='reset' value="RESET" /> 
+							<input type="submit" data-oper='list' value="LIST" />
+							</td>
 						</tr>
 					</form>
 				</tbody>
 			</table>
-			<table class="board" border='1'>
+			<table class="reply" border='1'>
 				<thead>
 					<tr>
 						<th>댓글 목록</th>
