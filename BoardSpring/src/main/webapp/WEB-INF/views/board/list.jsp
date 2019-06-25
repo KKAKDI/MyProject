@@ -4,9 +4,6 @@
 <%@ include file="../includes/header.jsp"%>
 <link rel='stylesheet' type='text/css' href='../resources/css/board.css'>
 <link rel='stylesheet' type='text/css' href='../resources/css/main.css'>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script>
 	$(document).ready(function() {
 		$("#regbtn").click(function() {
@@ -39,17 +36,10 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td class='bno'>0</a></td>
-					<td class='title'><a href="#">test</td>
-					<td class='writer'>test</td>
-					<td class='views'>0</td>
-					<td class='rdate'>0000-00-00</td>
-				</tr>
 				<c:forEach items="${blist}" var="board">
 					<tr>
 						<td class='bno'>${board.bno}</td>
-						<td class='title'><a href="#">${board.title}</td>
+						<td class='title'><a href="./get.do?bno=${board.bno}">${board.title}</a></td>
 						<td class='writer'>${board.writer}</td>
 						<td class='views'>${board.views}</td>
 						<td class='rdate'>${board.rdate}</td>

@@ -8,6 +8,9 @@
 	href='https://fonts.googleapis.com/css?family=Baloo+Bhai'>
 <link rel='stylesheet'
 	href='https://fonts.googleapis.com/css?family=Jua&amp;subset=korean'>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <!--  <link rel='stylesheet' type='text/css' href='resources/css/main.css'>-->
 <title>First Project Index</title>
 

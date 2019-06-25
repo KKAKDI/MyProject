@@ -25,11 +25,11 @@ public class BoardController {
 	public String boardList(Model model) {
 		List<BoardVO> list =service.boardList();		
 		model.addAttribute("blist", list);
-		return "/board/boardList";
+		return "/board/list";
 	}
 	@GetMapping("/reg.do")
 	public String boardRegForm() {
-		return "/board/boardReg";
+		return "/board/reg";
 	}
 	@PostMapping("/reg.do")
 	public String boardReg(BoardVO vo) {

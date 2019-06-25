@@ -16,7 +16,7 @@
 				<caption>BOARD INPUT</caption>
 				</thead>
 				<tbody>
-					<form action="/reg.do" method="post">
+					<form id="form" action="./reg.do" method="post">
 						<tr>
 							<th>제목</th>
 							<td><input type="text"
@@ -24,17 +24,17 @@
 						</tr>
 						<tr>
 							<th>작성자</th>
-							<td><input type="text" name="writer" value="test" disabled /></td>
+							<td><input type="text" name="writer"/></td>
 						</tr> 
 						<tr>
 							<th>내용</th>
-							<td height="200px"><textarea height="200px" name="detail"></textarea></td>
+							<td height="200px"><textarea height="200px" name="content"></textarea></td>
 						</tr>
 						<tr>
 							<td colspan="2">
 							<input type="submit" data-oper='submit' value="SUBMIT" /> 
-							<input type="submit" data-oper='reset' value="RESET" /> 
-							<input type="submit" data-oper='list' value="LIST" />
+							<input type="reset" data-oper='reset' value="RESET" /> 
+							<button id="list">LIST</button>
 							</td>
 						</tr>
 					</form>
@@ -65,4 +65,11 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">		
+	$(document).ready(function(){
+		$("#list").click(function(){
+			location.replace("/board/list.do");
+		});
+	});
+</script>
 <%@ include file="../includes/footer.jsp"%>
