@@ -16,25 +16,24 @@
 				<caption>BOARD INPUT</caption>
 				</thead>
 				<tbody>
-					<form id="form" action="./reg.do" method="post">
+					<form id="regForm" action="./reg.do" method="post">
 						<tr>
 							<th>제목</th>
-							<td><input type="text"
-								name="title" /></td>
+							<td><input type="text" name="title" /></td>
 						</tr>
 						<tr>
 							<th>작성자</th>
-							<td><input type="text" name="writer"/></td>
-						</tr> 
+							<td><input type="text" name="writer" /></td>
+						</tr>
 						<tr>
 							<th>내용</th>
 							<td height="200px"><textarea height="200px" name="content"></textarea></td>
 						</tr>
 						<tr>
 							<td colspan="2">
-							<input type="submit" data-oper='submit' value="SUBMIT" /> 
+							<input type="submit" data-oper='submit'	value="SUBMIT" /> 
 							<input type="reset" data-oper='reset' value="RESET" /> 
-							<button id="list">LIST</button>
+							<input type="submit" data-oper='list' value="LIST" />
 							</td>
 						</tr>
 					</form>
@@ -65,10 +64,18 @@
 		</div>
 	</div>
 </div>
-<script type="text/javascript">		
-	$(document).ready(function(){
-		$("#list").click(function(){
-			location.replace("/board/list.do");
+<script>
+	$(document).ready(function() {
+		var formObj = $("regForm");
+		$("button").on("click", function(e) {
+			e.preventDefault();
+			var operation = $(this).data("oper");
+			console.log(operation);
+			if (operation === "list") {
+				self.location = "/board/list.do";
+				return;
+			}
+			formObj.submit();
 		});
 	});
 </script>

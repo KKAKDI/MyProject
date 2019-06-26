@@ -28,8 +28,7 @@ public class BoardController {
 		return "/board/list";
 	}
 	@GetMapping("/reg.do")
-	public String boardRegForm() {
-		return "/board/reg";
+	public void boardRegForm() {	
 	}
 	@PostMapping("/reg.do")
 	public String boardReg(BoardVO vo) {

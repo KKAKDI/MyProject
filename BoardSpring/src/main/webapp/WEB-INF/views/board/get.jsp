@@ -40,6 +40,7 @@
 						<td colspan="4">
 							<button id="update">UPDATE</button>
 							<button id="list">LIST</button>
+							<button id="del">DELETE</button>
 						</td>
 					</tr>
 				</tbody>
@@ -49,13 +50,17 @@
 </div>
 <script>
 	$(document).ready(function() {
-
+		var bno = $("#bno").val();
+		
 		$("#list").click(function() {
 			location.replace("/board/list.do");
 		});
-		$("#update").click(function() {
-			var bno = $("#bno").val();
+		$("#update").click(function() {			
 			var url = "/board/modify.do?bno=" + bno;
+			$(location).attr("href", url);
+		});
+		$("#del").click(function() {			
+			var url = "/board/del.do?bno=" + bno;	
 			$(location).attr("href", url);
 		});
 	});
