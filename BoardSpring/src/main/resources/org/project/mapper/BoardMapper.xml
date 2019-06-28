@@ -8,7 +8,10 @@
   	  select * from BOARD order by BNO desc
   </select>
   <insert id="insert" parameterType="BoardVO">
-      insert into BOARD values(BOARD_SEQ.nextval, #{title}, #{content},#{writer},0,SYSDATE,SYSDATE)
+  	<selectKey keyProperty="bno" order="BEFORE" resultType="long">
+  	select board_seq.nextval from dual
+  	</selectKey>
+      insert into BOARD values(#{bno}, #{title}, #{content},#{writer},0,SYSDATE,SYSDATE)
   </insert>
   
   <select id="content" resultType="BoardVO" parameterType="long">
