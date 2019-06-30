@@ -73,9 +73,11 @@
 			console.log(operation);
 			if (operation === "list") {
 				self.location = "/board/list.do";
-				return;
+				return false;
+			}else{
+				formObj.submit();
 			}
-			formObj.submit();
+			//formObj.submit();
 		});
 	});
 </script>

@@ -35,11 +35,22 @@
 		                modal.style.display = "none";
 		            }
 		        }
-
+				var actionForm = $("#actionForm");
+				
+				$(".pagination_button").click(function(e){
+					e.preventDefault();
+					console.log(this.href);
+					console.log($(this).href);					
+					actionForm.find("input[name='pageNum']").val(this.href);
+					//actionForm.submit();					
+				});
 			});
 </script>
 <!-- MODAL -->
-
+<form id="actionForm" action="list.do" method="get">
+	<input type='hidden' name='pageNum' value='${pageMaker.pg.pageNum}'>
+	<input type='hidden' name='amount' value='${pageMaker.pg.amount}'>
+</form>
 <div class="modal" id="myModal">
 	<div class="modal-content">
 		<div class="modal-header">
@@ -84,6 +95,23 @@
 					</c:forEach>
 				</tbody>
 			</table>
+			<!--paging-->
+			<div class='pull-right'>
+				<ul class="pagination">
+					<c:if test="${pageMaker.prev}">
+						<li class="pagination_button previous"><a href="${pageMaker.startPage-1}">PREV</a>
+						</li>
+					</c:if>
+					<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+					<li class="pagination_button ${pageMaker.pg.pageNum==num ? 'active':''}"><a href="${num}">${num}</a></li>					
+					</c:forEach>
+					
+					<c:if test="${pageMaker.next}">
+						<li class="pagination_button next"><a href="${pageMaker.endPage+1}">NEXT</a>
+						</li>
+					</c:if>
+				</ul>
+			</div>
 		</div>
 	</div>
 </div>

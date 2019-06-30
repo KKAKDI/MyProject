@@ -3,6 +3,7 @@ package org.project.service;
 import java.util.List;
 
 import org.project.domain.BoardVO;
+import org.project.domain.Paging;
 import org.project.mapper.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,8 +18,8 @@ public class BoardServiceImpl implements BoardService {
 	private BoardMapper bmapper;
 	
 	@Override
-	public List<BoardVO> boardList() {		
-		return bmapper.list();
+	public List<BoardVO> boardList(Paging pg) {		
+		return bmapper.pagingList(pg);
 	}
 
 	@Override

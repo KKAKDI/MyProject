@@ -3,6 +3,8 @@ package org.project.control;
 import java.util.List;
 
 import org.project.domain.BoardVO;
+import org.project.domain.PageDTO;
+import org.project.domain.Paging;
 import org.project.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,9 +27,9 @@ public class BoardController {
 	private BoardService service;
 	
 	@RequestMapping("/list.do")
-	public String boardList(Model model) {	
-		List<BoardVO> list =service.boardList();		
-		model.addAttribute("blist", list);
+	public String boardList(Model model,Paging pg) {			
+		model.addAttribute("pageMaker",new PageDTO(pg,123));
+		model.addAttribute("blist", service.boardList(pg));
 		return "/board/list";
 	}
 	@GetMapping("/reg.do")
