@@ -27,9 +27,10 @@ public class BoardController {
 	private BoardService service;
 	
 	@RequestMapping("/list.do")
-	public String boardList(Model model,Paging pg) {			
-		model.addAttribute("pageMaker",new PageDTO(pg,123));
+	public String boardList(Model model,Paging pg) {					
 		model.addAttribute("blist", service.boardList(pg));
+		int total = service.total(pg);
+		model.addAttribute("pageMaker",new PageDTO(pg,total));
 		return "/board/list";
 	}
 	@GetMapping("/reg.do")

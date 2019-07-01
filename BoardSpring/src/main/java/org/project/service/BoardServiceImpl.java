@@ -42,4 +42,9 @@ public class BoardServiceImpl implements BoardService {
 		bmapper.update(vo);
 	}
 
+	@Override
+	public int total(Paging pg) {
+		return bmapper.total(pg);
+	}
+
 }

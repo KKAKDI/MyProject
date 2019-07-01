@@ -37,12 +37,11 @@
 		        }
 				var actionForm = $("#actionForm");
 				
-				$(".pagination_button").click(function(e){
-					e.preventDefault();
-					console.log(this.href);
-					console.log($(this).href);					
-					actionForm.find("input[name='pageNum']").val(this.href);
-					//actionForm.submit();					
+				$(".num").click(function(e){
+					e.preventDefault();					
+					console.log($(this).find('a').attr('href'));
+					actionForm.find("input[name='pageNum']").val($(this).find('a').attr('href'));
+					actionForm.submit();					
 				});
 			});
 </script>
@@ -63,8 +62,10 @@
 <div id='tablebox'>
 	<div id='table'>
 		<div id=content>
-			<p>SPRING BOARD</p>
-			<button id="regbtn">글 작성</button>
+			<div id=contentEtc>
+			<input type="text"/>
+			<button id="regbtn">글작성</button>
+			</div>
 			<table class="board" border='1' cellspacing='0'>
 				<caption>게시판 리스트</caption>
 				<colgroup>
@@ -96,18 +97,18 @@
 				</tbody>
 			</table>
 			<!--paging-->
-			<div class='pull-right'>
-				<ul class="pagination">
+			<div class="page">
+				<ul class="pagination modal_2">
 					<c:if test="${pageMaker.prev}">
-						<li class="pagination_button previous"><a href="${pageMaker.startPage-1}">PREV</a>
+						<li class="num previous"><a href="${pageMaker.startPage-1}">PREV</a>
 						</li>
 					</c:if>
 					<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-					<li class="pagination_button ${pageMaker.pg.pageNum==num ? 'active':''}"><a href="${num}">${num}</a></li>					
+					<li class="num ${pageMaker.pg.pageNum==num ? 'active':''}"><a href="${num}">${num}</a></li>					
 					</c:forEach>
 					
 					<c:if test="${pageMaker.next}">
-						<li class="pagination_button next"><a href="${pageMaker.endPage+1}">NEXT</a>
+						<li class="num next"><a href="${pageMaker.endPage+1}">NEXT</a>
 						</li>
 					</c:if>
 				</ul>
