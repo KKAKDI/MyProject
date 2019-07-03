@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,7 +35,8 @@ public class BoardController {
 		return "/board/list";
 	}
 	@GetMapping("/reg.do")
-	public void boardRegForm() {	
+	public String boardRegForm() {	
+		return "/board/reg";
 	}
 	@PostMapping("/reg.do")
 	public String boardReg(BoardVO vo, RedirectAttributes rttr) {
@@ -44,8 +46,9 @@ public class BoardController {
 		return "redirect:list.do";
 	}
 	@GetMapping({"/get.do","/modify.do"})
-	public void get(Model model,@RequestParam("bno")long bno) {
-		model.addAttribute("board",service.selBoard(bno));
+	public void get(@RequestParam("bno")long bno,@ModelAttribute("pg")Paging pg,Model model) {
+		log.info("get & modi");
+		model.addAttribute("board",service.selBoard(bno));		
 	}
 	@RequestMapping("/del.do")
 	public String boardDel(@RequestParam("bno") long bno) {

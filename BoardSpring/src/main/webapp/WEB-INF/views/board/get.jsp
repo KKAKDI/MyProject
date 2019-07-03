@@ -17,7 +17,7 @@
 					<col width='20'>
 				</colgroup>
 				<thead>
-					<caption>CONTENT</caption>
+				<caption>CONTENT</caption>
 				</thead>
 				<tbody>
 					<tr>
@@ -48,21 +48,26 @@
 		</div>
 	</div>
 </div>
+<form id="operForm" action="/board/modify" method="get">
+	<input type='hidden' id='bno' name='bno' value='${board.bno}'/>
+	<input type='hidden' id='pageNum' name='pageNum' value='${pg.pageNum}'/>
+	<input type='hidden' id='amount' name='amount' value='${pg.amount}'/>
+</form>
 <script>
 	$(document).ready(function() {
 		var bno = $("#bno").val();
-		
+
 		$("#list").click(function() {
 			location.replace("/board/list.do");
 		});
-		$("#update").click(function() {			
+		$("#update").click(function() {
 			var url = "/board/modify.do?bno=" + bno;
 			$(location).attr("href", url);
 		});
-		$("#del").click(function() {			
-			var url = "/board/del.do?bno=" + bno;	
+		$("#del").click(function() {
+			var url = "/board/del.do?bno=" + bno;
 			$(location).attr("href", url);
 		});
 	});
 </script>
-					<%@ include file="../includes/footer.jsp"%>
+<%@ include file="../includes/footer.jsp"%>

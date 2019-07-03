@@ -31,9 +31,9 @@
 						</tr>
 						<tr>
 							<td colspan="2">
-							<input type="submit" data-oper='submit'	value="SUBMIT" /> 
-							<input type="reset" data-oper='reset' value="RESET" /> 
-							<input type="submit" data-oper='list' value="LIST" />
+							<button type="submit" data-oper='submit'>SUBMIT </button>
+							<button type="reset" data-oper='reset'>RESET </button>
+							<button type="submit" data-oper='list'>LIST</button>
 							</td>
 						</tr>
 					</form>
@@ -66,18 +66,21 @@
 </div>
 <script>
 	$(document).ready(function() {
-		var formObj = $("regForm");
+		var formObj = $("#regForm");
+		
 		$("button").on("click", function(e) {
+			
 			e.preventDefault();
+			
 			var operation = $(this).data("oper");
+			
 			console.log(operation);
+			
 			if (operation === "list") {
-				self.location = "/board/list.do";
-				return false;
-			}else{
-				formObj.submit();
+				self.location="/board/list.do";
+				return;
 			}
-			//formObj.submit();
+			formObj.submit();
 		});
 	});
 </script>

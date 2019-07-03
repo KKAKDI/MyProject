@@ -43,6 +43,12 @@
 					actionForm.find("input[name='pageNum']").val($(this).find('a').attr('href'));
 					actionForm.submit();					
 				});
+				$(".move").on("click",function(e){
+					e.preventDefault();
+					actionForm.append("<input type='hidden' name='bno' value='"+$(this).attr('href')+"'>");
+					actionForm.attr("action","./get.do");
+					actionForm.submit();
+				});
 			});
 </script>
 <!-- MODAL -->
@@ -88,7 +94,7 @@
 					<c:forEach items="${blist}" var="board">
 						<tr>
 							<td class='bno'>${board.bno}</td>
-							<td class='title'><a href="./get.do?bno=${board.bno}">${board.title}</a></td>
+							<td class='title'><a class="move" href="${board.bno}">${board.title}</a></td>
 							<td class='writer'>${board.writer}</td>
 							<td class='views'>${board.views}</td>
 							<td class='rdate'>${board.rdate}</td>
