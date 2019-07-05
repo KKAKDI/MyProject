@@ -38,8 +38,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void updateBoard(BoardVO vo) {
-		bmapper.update(vo);
+	public boolean updateBoard(BoardVO vo) {		
+		return bmapper.update(vo)==1;
 	}
 
 	@Override

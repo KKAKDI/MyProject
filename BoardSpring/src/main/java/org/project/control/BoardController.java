@@ -50,6 +50,15 @@ public class BoardController {
 		log.info("get & modi");
 		model.addAttribute("board",service.selBoard(bno));		
 	}
+	@PostMapping("/modify.do")
+	public String modify(BoardVO vo,@ModelAttribute("pg")Paging pg,RedirectAttributes rttr) {
+		if(service.updateBoard(vo)) {
+			rttr.addFlashAttribute("result","success");
+		}
+		rttr.addAttribute("pageNum",pg.getPageNum());
+		rttr.addAttribute("amount",pg.getAmount());
+		return "redirect:list.do";
+	}
 	@RequestMapping("/del.do")
 	public String boardDel(@RequestParam("bno") long bno) {
 		service.delBoard(bno);

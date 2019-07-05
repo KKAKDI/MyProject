@@ -38,9 +38,9 @@
 					</tr>
 					<tr>
 						<td colspan="4">
-							<button id="update">UPDATE</button>
-							<button id="list">LIST</button>
-							<button id="del">DELETE</button>
+							<button data-oper="update" id="update">UPDATE</button>
+							<button data-oper="list" id="list">LIST</button>
+							<button data-oper="del" id="del">DELETE</button>
 						</td>
 					</tr>
 				</tbody>
@@ -48,7 +48,7 @@
 		</div>
 	</div>
 </div>
-<form id="operForm" action="/board/modify" method="get">
+<form id="operForm" action="/board/modify.do" method="get">
 	<input type='hidden' id='bno' name='bno' value='${board.bno}'/>
 	<input type='hidden' id='pageNum' name='pageNum' value='${pg.pageNum}'/>
 	<input type='hidden' id='amount' name='amount' value='${pg.amount}'/>
@@ -56,18 +56,31 @@
 <script>
 	$(document).ready(function() {
 		var bno = $("#bno").val();
-
-		$("#list").click(function() {
-			location.replace("/board/list.do");
-		});
-		$("#update").click(function() {
-			var url = "/board/modify.do?bno=" + bno;
-			$(location).attr("href", url);
-		});
-		$("#del").click(function() {
-			var url = "/board/del.do?bno=" + bno;
-			$(location).attr("href", url);
-		});
+		var formObj = $("form");
+		
+		$('button').on("click",function(e){
+			e.preventDefault();
+			var operation = $(this).data("oper");
+			if(operation==='list'){
+				formObj.attr("action","/board/list.do").attr("method","get");
+				var pageNum = $("input[name='pageNum']").clone();
+				var amount = $("input[name='amount']").clone();
+				console.log(pageNum);
+				console.log(amount);
+				formObj.empty();
+				formObj.append(pageNum);
+				formObj.append(amount);
+			}else if(operation==='update'){
+				formObj.attr("action","/board/modify.do");
+				//var url = "/board/modify.do?bno=" + bno;
+				//$(location).attr("href", url);
+			}else if(operation==='del'){
+				formObj.attr("action","/board/del.do");
+				//var url = "/board/del.do?bno=" + bno;
+				//$(location).attr("href", url);
+			}
+			formObj.submit();
+		});				
 	});
 </script>
 <%@ include file="../includes/footer.jsp"%>

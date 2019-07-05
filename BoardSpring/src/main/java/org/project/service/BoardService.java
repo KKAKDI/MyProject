@@ -11,6 +11,6 @@ public interface BoardService {
 	public void regBoard(BoardVO vo);
 	public void delBoard(long bno);
 	public BoardVO selBoard(long bno);
-	public void updateBoard(BoardVO vo);
+	public boolean updateBoard(BoardVO vo);
 	public int total(Paging pg);
 }
